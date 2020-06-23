@@ -19,6 +19,7 @@ namespace ProjectManager.Core.Models
         public string FirstName { get; set; }
         [StringLength(50)]
         public string LastName { get; set; }
+        public bool Gender { get; set; }
         public string Url { get; set; }
         public string EMail { get; set; }
         public string Password { get; set; }

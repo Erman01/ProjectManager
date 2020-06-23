@@ -55,6 +55,10 @@
     <Compile Include="Migrations\202006231601145_Initial.designer.cs">
       <DependentUpon>202006231601145_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006231606445_GenderColumnInEmployeeModel.cs" />
+    <Compile Include="Migrations\202006231606445_GenderColumnInEmployeeModel.designer.cs">
+      <DependentUpon>202006231606445_GenderColumnInEmployeeModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjectManagerDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,6 +77,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202006231601145_Initial.resx">
       <DependentUpon>202006231601145_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006231606445_GenderColumnInEmployeeModel.resx">
+      <DependentUpon>202006231606445_GenderColumnInEmployeeModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
