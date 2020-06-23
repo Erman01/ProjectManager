@@ -29,11 +29,10 @@
                         Password = c.String(),
                         DepartmentId = c.Int(nullable: false),
                         CreatedAt = c.DateTime(nullable: false),
-                        DepartmentModel_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.DepartmentModels", t => t.DepartmentModel_Id)
-                .Index(t => t.DepartmentModel_Id);
+                .ForeignKey("dbo.DepartmentModels", t => t.DepartmentId, cascadeDelete: true)
+                .Index(t => t.DepartmentId);
             
             CreateTable(
                 "dbo.GalleryModels",
@@ -58,27 +57,22 @@
                         Description = c.String(maxLength: 300),
                         Url = c.String(),
                         GalleryModelId = c.Int(nullable: false),
-                        EmployeeModelId = c.Int(nullable: false),
                         CreatedAt = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.EmployeeModels", t => t.EmployeeModelId, cascadeDelete: true)
-                .ForeignKey("dbo.GalleryModels", t => t.GalleryModelId, cascadeDelete: false)
-                .Index(t => t.GalleryModelId)
-                .Index(t => t.EmployeeModelId);
+                .ForeignKey("dbo.GalleryModels", t => t.GalleryModelId, cascadeDelete: true)
+                .Index(t => t.GalleryModelId);
             
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.ImageModels", "GalleryModelId", "dbo.GalleryModels");
-            DropForeignKey("dbo.ImageModels", "EmployeeModelId", "dbo.EmployeeModels");
             DropForeignKey("dbo.GalleryModels", "EmployeeModelId", "dbo.EmployeeModels");
-            DropForeignKey("dbo.EmployeeModels", "DepartmentModel_Id", "dbo.DepartmentModels");
-            DropIndex("dbo.ImageModels", new[] { "EmployeeModelId" });
+            DropForeignKey("dbo.EmployeeModels", "DepartmentId", "dbo.DepartmentModels");
             DropIndex("dbo.ImageModels", new[] { "GalleryModelId" });
             DropIndex("dbo.GalleryModels", new[] { "EmployeeModelId" });
-            DropIndex("dbo.EmployeeModels", new[] { "DepartmentModel_Id" });
+            DropIndex("dbo.EmployeeModels", new[] { "DepartmentId" });
             DropTable("dbo.ImageModels");
             DropTable("dbo.GalleryModels");
             DropTable("dbo.EmployeeModels");

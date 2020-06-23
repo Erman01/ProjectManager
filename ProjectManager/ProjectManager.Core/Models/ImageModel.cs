@@ -16,8 +16,7 @@ namespace ProjectManager.Core.Models
         public string Description { get; set; }
         public string Url { get; set; }
         public int GalleryModelId { get; set; }
-        public int EmployeeModelId { get; set; }
         public virtual GalleryModel GalleryModel { get; set; }
-        public virtual EmployeeModel EmployeeModel { get; set; }
+       
     }
 }

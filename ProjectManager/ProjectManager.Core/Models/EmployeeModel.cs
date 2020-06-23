@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,6 @@ namespace ProjectManager.Core.Models
         public EmployeeModel()
         {
             GalleryModels = new List<GalleryModel>();
-            ImageModels = new List<ImageModel>();
         }
         public int Id { get; set; }
         [StringLength(50)]
@@ -23,9 +23,9 @@ namespace ProjectManager.Core.Models
         public string EMail { get; set; }
         public string Password { get; set; }
         public int DepartmentId { get; set; }
+        [ForeignKey("DepartmentId")]
         public virtual DepartmentModel DepartmentModel { get; set; }
         public virtual ICollection<GalleryModel> GalleryModels { get; set; }
-        public virtual ICollection<ImageModel> ImageModels { get; set; }
-
+       
     }
 }

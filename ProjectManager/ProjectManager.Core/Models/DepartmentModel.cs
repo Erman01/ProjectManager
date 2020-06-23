@@ -9,6 +9,10 @@ namespace ProjectManager.Core.Models
 {
     public class DepartmentModel : BaseEntity
     {
+        public DepartmentModel()
+        {
+            EmployeeModels = new List<EmployeeModel>();
+        }
         public int Id { get; set; }
         [StringLength(100)]
         public string Name { get; set; }
