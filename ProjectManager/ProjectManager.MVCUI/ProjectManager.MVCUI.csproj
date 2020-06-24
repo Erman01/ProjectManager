@@ -193,6 +193,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DepartmentManagerController.cs" />
+    <Compile Include="Controllers\EmployeeManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -264,9 +265,14 @@
     <Content Include="Views\DepartmentManager\Create.cshtml" />
     <Content Include="Views\DepartmentManager\Edit.cshtml" />
     <Content Include="Views\DepartmentManager\Delete.cshtml" />
+    <Content Include="Views\EmployeeManager\Index.cshtml" />
+    <Content Include="Views\EmployeeManager\Create.cshtml" />
+    <Content Include="Views\EmployeeManager\Edit.cshtml" />
+    <Content Include="Views\EmployeeManager\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\EmployeeProfileImage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

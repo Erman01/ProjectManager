@@ -12,7 +12,7 @@ namespace ProjectManager.DAL
     {
         public ProjectManagerDbContext():base("DefaultConnection")
         {
-
+            this.Configuration.LazyLoadingEnabled = false;
         }
         public DbSet<EmployeeModel> EmployeeModels { get; set; }
         public DbSet<DepartmentModel> DepartmentModels { get; set; }

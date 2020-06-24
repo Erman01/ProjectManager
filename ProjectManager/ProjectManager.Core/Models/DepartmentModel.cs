@@ -15,6 +15,7 @@ namespace ProjectManager.Core.Models
         }
         public int Id { get; set; }
         [StringLength(100)]
+        [Display(Name="Department")]
         public string Name { get; set; }
         public virtual ICollection<EmployeeModel> EmployeeModels { get; set; }
     }
