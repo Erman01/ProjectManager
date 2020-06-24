@@ -22,5 +22,90 @@ namespace ProjectManager.MVCUI.Controllers
 
             return View(departmentModel);
         }
+        public ActionResult Create()
+        {
+            DepartmentModel departmentModel = new DepartmentModel();
+
+            return View(departmentModel);
+        }
+        [HttpPost]
+        public ActionResult Create(DepartmentModel departmentModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(departmentModel);
+            }
+            else
+            {
+                _departmentModelRepository.Insert(departmentModel);
+                _departmentModelRepository.Commit();
+
+                return RedirectToAction("Index");
+            }
+        }
+        public ActionResult Edit(int Id)
+        {
+            DepartmentModel departmentModel = _departmentModelRepository.GetbyId(Id);
+            if (departmentModel==null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(departmentModel);
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit(DepartmentModel departmentModel,int Id)
+        {
+            DepartmentModel departmentModelToUpdate = _departmentModelRepository.GetbyId(Id);
+            if (departmentModelToUpdate==null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View(departmentModelToUpdate);
+                }
+                else
+                {
+                    departmentModelToUpdate.Name = departmentModel.Name;
+                    _departmentModelRepository.Commit();
+
+                    return RedirectToAction("Index");
+                }
+            }
+        }
+        public ActionResult Delete(int id)
+        {
+            DepartmentModel departmentModel = _departmentModelRepository.GetbyId(id);
+            if (departmentModel==null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(departmentModel);
+            }
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult ConfirmDelete(int id)
+        {
+            DepartmentModel departmentModelToDelete = _departmentModelRepository.GetbyId(id);
+            if (departmentModelToDelete==null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                _departmentModelRepository.Delete(id);
+                _departmentModelRepository.Commit();
+
+                return RedirectToAction("Index");
+            }
+        }
     }
 }
