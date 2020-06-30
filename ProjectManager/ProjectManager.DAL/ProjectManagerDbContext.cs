@@ -16,7 +16,7 @@ namespace ProjectManager.DAL
         }
         public DbSet<EmployeeModel> EmployeeModels { get; set; }
         public DbSet<DepartmentModel> DepartmentModels { get; set; }
-        public DbSet<ImageModel> ImageModels { get; set; }
+        public DbSet<ManagerModel> ManagerModels { get; set; }
         public DbSet<GalleryModel> GalleryModels { get; set; }
     }
 }

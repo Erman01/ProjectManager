@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using ProjectManager.Core.Contracts;
+using ProjectManager.Core.Models;
 using ProjectManager.MVCUI.Models;
 
 namespace ProjectManager.MVCUI.Controllers
@@ -17,15 +19,11 @@ namespace ProjectManager.MVCUI.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly IRepository<ManagerModel> _managerRepository;
 
-        public AccountController()
+        public AccountController(IRepository<ManagerModel> managerRepository)
         {
-        }
-
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
+            _managerRepository = managerRepository;
         }
 
         public ApplicationSignInManager SignInManager
@@ -34,9 +32,9 @@ namespace ProjectManager.MVCUI.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -120,7 +118,7 @@ namespace ProjectManager.MVCUI.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -155,13 +153,24 @@ namespace ProjectManager.MVCUI.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    ManagerModel managerModel = new ManagerModel()
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        ProfileUrl = model.ProfileUrl,
+                        Gender = model.Gender,
+                       
+                    };
+                    _managerRepository.Insert(managerModel);
+                    _managerRepository.Commit();
 
                     return RedirectToAction("Index", "Home");
                 }

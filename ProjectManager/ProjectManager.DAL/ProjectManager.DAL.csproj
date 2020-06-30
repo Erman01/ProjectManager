@@ -59,6 +59,22 @@
     <Compile Include="Migrations\202006231606445_GenderColumnInEmployeeModel.designer.cs">
       <DependentUpon>202006231606445_GenderColumnInEmployeeModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006300257241_EmployeeModelIdChangedIntToString.cs" />
+    <Compile Include="Migrations\202006300257241_EmployeeModelIdChangedIntToString.designer.cs">
+      <DependentUpon>202006300257241_EmployeeModelIdChangedIntToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006301104191_CreateManagerTableDeleteImageTable.cs" />
+    <Compile Include="Migrations\202006301104191_CreateManagerTableDeleteImageTable.designer.cs">
+      <DependentUpon>202006301104191_CreateManagerTableDeleteImageTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006301113487_ChangeForeignKeyInGalleryTable.cs" />
+    <Compile Include="Migrations\202006301113487_ChangeForeignKeyInGalleryTable.designer.cs">
+      <DependentUpon>202006301113487_ChangeForeignKeyInGalleryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006301120328_CreateForeignKey.cs" />
+    <Compile Include="Migrations\202006301120328_CreateForeignKey.designer.cs">
+      <DependentUpon>202006301120328_CreateForeignKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjectManagerDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +96,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006231606445_GenderColumnInEmployeeModel.resx">
       <DependentUpon>202006231606445_GenderColumnInEmployeeModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006300257241_EmployeeModelIdChangedIntToString.resx">
+      <DependentUpon>202006300257241_EmployeeModelIdChangedIntToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006301104191_CreateManagerTableDeleteImageTable.resx">
+      <DependentUpon>202006301104191_CreateManagerTableDeleteImageTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006301113487_ChangeForeignKeyInGalleryTable.resx">
+      <DependentUpon>202006301113487_ChangeForeignKeyInGalleryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006301120328_CreateForeignKey.resx">
+      <DependentUpon>202006301120328_CreateForeignKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

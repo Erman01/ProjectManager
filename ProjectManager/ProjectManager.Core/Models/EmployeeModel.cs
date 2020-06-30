@@ -10,10 +10,6 @@ namespace ProjectManager.Core.Models
 {
     public class EmployeeModel : BaseEntity
     {
-        public EmployeeModel()
-        {
-            GalleryModels = new List<GalleryModel>();
-        }
         public int Id { get; set; }
         [StringLength(50)]
         [Display(Name ="First Name")]
@@ -30,7 +26,7 @@ namespace ProjectManager.Core.Models
         public int DepartmentId { get; set; }
         [ForeignKey("DepartmentId")]
         public virtual DepartmentModel DepartmentModel { get; set; }
-        public virtual ICollection<GalleryModel> GalleryModels { get; set; }
+        
        
     }
 }

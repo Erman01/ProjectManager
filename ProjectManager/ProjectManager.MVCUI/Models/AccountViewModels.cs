@@ -79,6 +79,13 @@ namespace ProjectManager.MVCUI.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+        public bool Gender { get; set; }
+        public string ProfileUrl { get; set; }
+      
     }
 
     public class ResetPasswordViewModel
