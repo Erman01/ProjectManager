@@ -75,6 +75,10 @@
     <Compile Include="Migrations\202006301120328_CreateForeignKey.designer.cs">
       <DependentUpon>202006301120328_CreateForeignKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006301546594_CreateGalleryImageModel.cs" />
+    <Compile Include="Migrations\202006301546594_CreateGalleryImageModel.designer.cs">
+      <DependentUpon>202006301546594_CreateGalleryImageModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjectManagerDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006301120328_CreateForeignKey.resx">
       <DependentUpon>202006301120328_CreateForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006301546594_CreateGalleryImageModel.resx">
+      <DependentUpon>202006301546594_CreateGalleryImageModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

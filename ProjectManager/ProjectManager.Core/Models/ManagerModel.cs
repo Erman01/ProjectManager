@@ -12,6 +12,7 @@ namespace ProjectManager.Core.Models
         public ManagerModel()
         {
             GalleryModels = new List<GalleryModel>();
+            GalleryImageModels = new List<GalleryImageModel>();
         }
         [Key]
         public int Id { get; set; }
@@ -27,5 +28,6 @@ namespace ProjectManager.Core.Models
         [StringLength(200)]
         public string Email { get; set; }
         public virtual ICollection<GalleryModel> GalleryModels { get; set; }
+        public virtual ICollection<GalleryImageModel> GalleryImageModels { get; set; }
     }
 }

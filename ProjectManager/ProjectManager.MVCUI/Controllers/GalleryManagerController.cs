@@ -12,6 +12,7 @@ using WebGrease.Activities;
 
 namespace ProjectManager.MVCUI.Controllers
 {
+    [Authorize]
     public class GalleryManagerController : Controller
     {
         private readonly IRepository<GalleryModel> _galleryModelRepository;
@@ -27,7 +28,7 @@ namespace ProjectManager.MVCUI.Controllers
 
             return View(galleryModels);
         }
-        [Authorize]
+   
         public ActionResult Create()
         {
             GalleryModel galleryModel = new GalleryModel();
@@ -35,7 +36,7 @@ namespace ProjectManager.MVCUI.Controllers
             return View(galleryModel);
         }
         [HttpPost]
-        [Authorize]
+       
         public ActionResult Create(GalleryModel galleryModel, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
@@ -57,7 +58,7 @@ namespace ProjectManager.MVCUI.Controllers
                 return RedirectToAction("Index");
             }
         }
-        [Authorize]
+      
         public ActionResult Edit(int id)
         {
             GalleryModel galleryModel = _galleryModelRepository.GetbyId(id);
@@ -73,7 +74,7 @@ namespace ProjectManager.MVCUI.Controllers
 
         }
         [HttpPost]
-        [Authorize]
+     
         public ActionResult Edit(GalleryModel galleryModel, int id, HttpPostedFileBase file)
         {
             GalleryModel galleryModelToDelete = _galleryModelRepository.GetbyId(id);

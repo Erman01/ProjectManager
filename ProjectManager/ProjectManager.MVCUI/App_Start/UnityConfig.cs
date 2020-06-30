@@ -49,6 +49,7 @@ namespace ProjectManager.MVCUI
             container.RegisterType<IRepository<DepartmentModel>, SQLRepository<DepartmentModel>>();
             container.RegisterType<IRepository<GalleryModel>, SQLRepository<GalleryModel>>();
             container.RegisterType<IRepository<ManagerModel>, SQLRepository<ManagerModel>>();
+            container.RegisterType<IRepository<GalleryImageModel>, SQLRepository<GalleryImageModel>>();
         }
     }
 }
