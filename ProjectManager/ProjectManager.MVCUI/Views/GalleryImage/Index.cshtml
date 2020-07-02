@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ProjectManager.Core.Models.GalleryImageModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>@User.Identity.Name's Image List</h2>
+
+<p>
+    @Html.ActionLink("Upload a new image", "Create", null, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to Gallery", "Index", "GalleryManager", null, new { @class = "btn btn-default" })
+</p>
+
+
+<div class="row">
+    <div class="alert alert-success">@ViewBag.Success You have @ViewBag.PhotoCount Photos </div>
+
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+
+                <a>
+                    <img class="img-responsive" style="height:200px;width:auto;align-items:center;border-color:black;" src="~/Content/GalleryImages/@item.Url" />
+                </a>
+                <div class="caption">
+
+                    <ul style="list-style:none">
+
+                        <li><b>@item.Description</b></li>
+                        <br />
+                        <li><b>Created Date :</b> @item.CreatedAt.ToString("dd.MM.yyyy")</li>
+                        <br />
+                        <li>
+
+                            @Html.ActionLink("Edit", "Edit", "GalleryImage", new { id = item.Id }, new { @class = "btn btn-warning" }) |
+                            @Html.ActionLink("Delete", "Delete", "GalleryImage", new { id = item.Id }, new { @class = "btn btn-danger" })
+
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+

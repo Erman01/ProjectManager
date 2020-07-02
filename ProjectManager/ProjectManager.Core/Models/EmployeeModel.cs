@@ -18,11 +18,13 @@ namespace ProjectManager.Core.Models
         [Display(Name ="Last Name")]
         public string LastName { get; set; }
         public bool Gender { get; set; }
+        [Display(Name = "Employee Image")]
         public string Url { get; set; }
         [Display(Name ="E-Mail")]
         public string EMail { get; set; }
-        public string Password { get; set; }
-        [Display(Name ="Department")]
+        [Display(Name ="Date of Birth")]
+        public DateTime DateOfBirth { get; set; }
+        [Display(Name ="Department Name")]
         public int DepartmentId { get; set; }
         [ForeignKey("DepartmentId")]
         public virtual DepartmentModel DepartmentModel { get; set; }

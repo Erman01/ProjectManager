@@ -1,0 +1,15 @@
+﻿@model ProjectManager.Core.ViewModels.MessageViewModel
+    <br />
+@if (Model.Status)
+{
+    <div class="alert alert-success" role="alert">
+        @Model.Message <a href="@Model.Url">@Model.LinkText</a>
+    </div>
+}
+else
+{
+
+    <div class="alert alert-danger" role="alert">
+        @Model.Message <a href="@Model.Url">@Model.LinkText</a>
+    </div>
+}

@@ -11,9 +11,11 @@ namespace ProjectManager.MVCUI.Controllers
     public class DepartmentManagerController : Controller
     {
         private readonly IRepository<DepartmentModel> _departmentModelRepository;
-        public DepartmentManagerController(IRepository<DepartmentModel> departmentModelRepository)
+        private readonly IRepository<EmployeeModel> _employeeModelRepository;
+        public DepartmentManagerController(IRepository<DepartmentModel> departmentModelRepository, IRepository<EmployeeModel> employeeModelRepository)
         {
             _departmentModelRepository = departmentModelRepository;
+            _employeeModelRepository = employeeModelRepository;
         }
         // GET: DepartmentManager
         public ActionResult Index()
@@ -21,6 +23,20 @@ namespace ProjectManager.MVCUI.Controllers
            List<DepartmentModel> departmentModel = _departmentModelRepository.Collection().ToList();
 
             return View(departmentModel);
+        }
+        public ActionResult DepartmentEmployees(int id)
+        {
+            DepartmentModel departmentModel = _departmentModelRepository.GetbyId(id);
+            if (departmentModel==null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                List<EmployeeModel> employeeList = _employeeModelRepository.Collection().Where(x => x.DepartmentId == departmentModel.Id).ToList();
+                ViewBag.TotalEmployee = employeeList.Count();
+                return View(employeeList);
+            }
         }
         public ActionResult Create()
         {

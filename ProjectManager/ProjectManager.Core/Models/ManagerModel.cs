@@ -23,6 +23,7 @@ namespace ProjectManager.Core.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         public bool Gender { get; set; }
+        [Display(Name ="Profile Picture")]
         public string ProfileUrl { get; set; }
         [Display(Name = "E-Mail")]
         [StringLength(200)]

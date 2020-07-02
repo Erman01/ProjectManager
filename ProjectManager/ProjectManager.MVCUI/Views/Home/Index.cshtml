@@ -3,19 +3,21 @@
     ViewBag.Title = "Home Page";
 }
 <br />
-<h4>All Images</h4>
+<h4>All Galleries</h4>
 <hr />
-@foreach (var item in Model)
-{
-    <div class="col-md-3" style="margin:5px;padding:5px">
-        <div class="col-md-12">
-            <a href="#" target="_blank">
-                <img class="img-responsive" src="~/Content/Galleries/@item.Url" style="height:250px;border:1px solid thin whitesmoke;" />
+
+<div class="row" style="align-content:center">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-5 col-xs-6 thumb" style="border:1px solid;border-color:cadetblue;margin:8px;padding:8px">
+
+            <h4 class="text-center">@item.Title</h4>
+            <a href="@Url.Action("Index","GalleryManager")">
+                <img class="img-responsive center-block" src="~/Content/Galleries/@item.Url" style="height:200px" alt="@item.Title">
+                <b>See More!</b>
             </a>
+
         </div>
-        <div class="col-md-12">
-            <h4>@item.Title.ToUpper()</h4>
-            <p>Created at @item.CreatedAt.ToString("dd.MM.yyyy")</p>
-        </div>
-    </div>
-}
+    }
+</div>

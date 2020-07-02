@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ProjectManager.Core.Models.GalleryImageModel>
+
+@{
+    ViewBag.Title = "GalleryImages";
+}
+
+<h2>Gallery Images</h2>
+
+<p>
+    @Html.ActionLink("Upload More Images", "Create", "GalleryImage", null, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to Gallery", "Index", "GalleryManager", null, new { @class = "btn btn-default" })
+</p>
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="alert alert-warning">You have @ViewBag.Photos Photos </div>
+    </div>
+    @foreach (var item in Model)
+    {
+<div class="col-lg-3 col-md-5 col-xs-6 thumb" style="border:1px solid;border-color:cadetblue;margin:8px;padding:8px">
+
+    <h4 class="text-center">@item.Description</h4>
+    <a>
+        <img class="img-responsive" src="~/Content/GalleryImages/@item.Url" style="height:200px;width:100%" alt="@item.Description">
+    </a>
+    <hr />
+    <a href="@Url.Action("Delete","GalleryImage",new { id = item.Id })" class="btn btn-danger btn-default">
+        Delete  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </a>
+    <a href="@Url.Action("Edit","GalleryImage",new { id = item.Id })" class="btn btn-default btn-default">
+        Edit <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+    </a>
+
+</div>
+
+
+    }
+</div>
+
+
+

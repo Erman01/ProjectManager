@@ -15,7 +15,7 @@
         </dt>
 
         <dd>
-            <img class="img-responsive" style="height:200px" src="~/Content/EmployeeProfileImage/@Model.Url" />
+            <img class="img-responsive" style="height:200px" src="~/Content/EmployeeImage/@Model.Url" />
         </dd>
 
         <dt>
@@ -40,6 +40,14 @@
 
         <dd>
             @(Model.Gender==true?"Male":"Female")
+        </dd>
+
+        <dt>
+          Age
+        </dt>
+
+        <dd>
+           @(DateTime.Now.Year-Model.DateOfBirth.Year)
         </dd>
 
         <dt>

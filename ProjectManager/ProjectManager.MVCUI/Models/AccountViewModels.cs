@@ -84,6 +84,7 @@ namespace ProjectManager.MVCUI.Models
         [Required]
         public string LastName { get; set; }
         public bool Gender { get; set; }
+        [Display(Name ="Choose a Profile Photo")]
         public string ProfileUrl { get; set; }
       
     }

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ProjectManager.MVCUI.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly IRepository<GalleryModel> _galleryRepository;

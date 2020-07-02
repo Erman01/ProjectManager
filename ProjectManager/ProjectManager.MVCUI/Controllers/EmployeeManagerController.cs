@@ -47,7 +47,7 @@ namespace ProjectManager.MVCUI.Controllers
                 if (file!=null)
                 {
                     employeeModel.Url = employeeModel.Id + Path.GetFileNameWithoutExtension(file.FileName)+".jpg";
-                    file.SaveAs(Server.MapPath("//Content//EmployeeProfileImage//") + employeeModel.Url);
+                    file.SaveAs(Server.MapPath("//Content//EmployeeImage//") + employeeModel.Url);
                 }
                 _employeeRepository.Insert(employeeModel);
                 _employeeRepository.Commit();
@@ -91,13 +91,13 @@ namespace ProjectManager.MVCUI.Controllers
                     if (file!=null)
                     {
                         employeeModelToEdit.Url = employeeModel.Id + Path.GetFileNameWithoutExtension(file.FileName) + ".jpg";
-                        file.SaveAs(Server.MapPath("//Content//EmployeeProfileImage//") + employeeModelToEdit.Url);
+                        file.SaveAs(Server.MapPath("//Content//EmployeeImage//") + employeeModelToEdit.Url);
                     }
                     employeeModelToEdit.FirstName = employeeModel.FirstName;
                     employeeModelToEdit.LastName = employeeModel.LastName;
                     employeeModelToEdit.Gender = employeeModel.Gender;
                     employeeModelToEdit.EMail = employeeModel.EMail;
-                    employeeModelToEdit.Password = employeeModel.Password;
+                    employeeModelToEdit.DateOfBirth = employeeModel.DateOfBirth;
                     employeeModelToEdit.DepartmentId = employeeModel.DepartmentId;
 
                     _employeeRepository.Commit();

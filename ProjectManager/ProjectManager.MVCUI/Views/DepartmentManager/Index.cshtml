@@ -9,30 +9,36 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
+            Department Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Created at
         </th>
+        <th></th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedAt)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id},new {@class="btn btn-warning" }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id },new {@class="btn btn-danger" })
+    </td>
+    <td>
+        <a href="@Url.Action("DepartmentEmployees","DepartmentManager",new {id=item.Id })" class="btn btn-primary">
+            See Employees
+        </a>
+    </td>
+</tr>
 }
 
 </table>

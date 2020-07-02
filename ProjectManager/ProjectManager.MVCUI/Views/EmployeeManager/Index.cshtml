@@ -4,73 +4,38 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Employee List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create",null,new {@class="btn btn-primary" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-          
 
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DepartmentId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EMail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        <img class="img-responsive" style="height:100px" src="~/Content/EmployeeProfileImage/@item.Url" />
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.FirstName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.LastName)
-    </td>
-    <td>
-      @item.DepartmentModel.Name
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.EMail)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Password)
-    </td>
-    <td>
-        @(item.Gender==true?"Male":"Female")
-    </td>
+                <img class="img-responsive" style="height:200px;width:50%;align-items:center;border-color:black;" src="~/Content/EmployeeImage/@item.Url" />
+                <div class="caption">
+                    <h3 style="text-align:center">@item.FirstName.ToUpper() @item.LastName.ToUpper()</h3>
+                    <ul style="list-style:none">
+                        <li><b>Age :</b> @(DateTime.Now.Year-item.DateOfBirth.Year)</li>
+                        <li><b>Gender :</b> @(item.Gender==true?"Male":"Female")</li>
+                        <li><b>E-mail :</b> @item.EMail</li>
+                        <li><b>Department Name : </b>@item.DepartmentModel.Name</li>
+                        <li><b>Start Date :</b> @item.CreatedAt.ToString("dd.MM.yyyy")</li>
+                        <br />
+                        <li>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                        </li>
+                    </ul>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.CreatedAt)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-    </td>
-</tr>
-}
+                </div>
+            </div>
 
-</table>
+        </div>
+    }
+
+</div>

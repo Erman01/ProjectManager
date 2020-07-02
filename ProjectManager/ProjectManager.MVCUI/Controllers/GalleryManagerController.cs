@@ -16,9 +16,11 @@ namespace ProjectManager.MVCUI.Controllers
     public class GalleryManagerController : Controller
     {
         private readonly IRepository<GalleryModel> _galleryModelRepository;
-        public GalleryManagerController(IRepository<GalleryModel> galleryModelRepository)
+        private readonly IRepository<GalleryImageModel> _galleryImageRepository;
+        public GalleryManagerController(IRepository<GalleryModel> galleryModelRepository, IRepository<GalleryImageModel> galleryImageRepository)
         {
             _galleryModelRepository = galleryModelRepository;
+            _galleryImageRepository = galleryImageRepository;
         }
         public ActionResult Index()
         {
@@ -27,6 +29,21 @@ namespace ProjectManager.MVCUI.Controllers
             ViewBag.PhotoCount = galleryModels.Count;
 
             return View(galleryModels);
+        }
+        public ActionResult GalleryImages(int id)
+        {
+            GalleryModel model = _galleryModelRepository.GetbyId(id);
+            
+            if (model==null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                List<GalleryImageModel> listOfImages = _galleryImageRepository.Collection().Where(x => x.GalleryModelId == model.Id).ToList();
+                ViewBag.Photos = listOfImages.Count;
+                return View(listOfImages);
+            }
         }
    
         public ActionResult Create()
@@ -51,6 +68,7 @@ namespace ProjectManager.MVCUI.Controllers
                     galleryModel.ManagerModelId = loggedInuserId;
                     galleryModel.Url = galleryModel.Id + Path.GetFileNameWithoutExtension(file.FileName) + ".jpg";
                     file.SaveAs(Server.MapPath("//Content//Galleries//") + galleryModel.Url);
+                    ViewBag.Success = "Uploaded Successfully";
                 }
                 _galleryModelRepository.Insert(galleryModel);
                 _galleryModelRepository.Commit();
@@ -74,7 +92,6 @@ namespace ProjectManager.MVCUI.Controllers
 
         }
         [HttpPost]
-     
         public ActionResult Edit(GalleryModel galleryModel, int id, HttpPostedFileBase file)
         {
             GalleryModel galleryModelToDelete = _galleryModelRepository.GetbyId(id);
