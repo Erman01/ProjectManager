@@ -192,6 +192,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminManagerController.cs" />
     <Compile Include="Controllers\DepartmentManagerController.cs" />
     <Compile Include="Controllers\EmployeeManagerController.cs" />
     <Compile Include="Controllers\GalleryImageController.cs" />
@@ -282,6 +283,7 @@
     <Content Include="Views\DepartmentManager\DepartmentEmployees.cshtml" />
     <Content Include="Views\GalleryManager\Edit.cshtml" />
     <Content Include="Views\Shared\_Message.cshtml" />
+    <Content Include="Views\AdminManager\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

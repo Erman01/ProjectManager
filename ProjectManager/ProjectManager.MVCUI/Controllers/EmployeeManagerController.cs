@@ -11,6 +11,7 @@ using System.IO;
 
 namespace ProjectManager.MVCUI.Controllers
 {
+    [Authorize(Roles = "Admin")]//admin@gmail.com C@de1234
     public class EmployeeManagerController : Controller
     {
         private readonly IRepository<EmployeeModel> _employeeRepository;

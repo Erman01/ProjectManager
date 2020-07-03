@@ -3,12 +3,15 @@
 @{
     ViewBag.Title = "Index";
 }
+<br />
 
 <h2>Employee List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create",null,new {@class="btn btn-primary" })
+    @Html.ActionLink("Create a New Employee", "Create", null, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to Admin Page", "Index", "AdminManager", null, new { @class = "btn btn-default" })
 </p>
+<hr />
 
 <div class="row">
     @foreach (var item in Model)
@@ -16,9 +19,9 @@
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
 
-                <img class="img-responsive" style="height:200px;width:50%;align-items:center;border-color:black;" src="~/Content/EmployeeImage/@item.Url" />
+                <img class="img-responsive" style="height:150px;align-items:center;border-color:black;padding:5px" src="~/Content/EmployeeImage/@item.Url" />
                 <div class="caption">
-                    <h3 style="text-align:center">@item.FirstName.ToUpper() @item.LastName.ToUpper()</h3>
+                    <h3 style="text-align:center;color:blue">@item.FirstName.ToUpper() @item.LastName.ToUpper()</h3>
                     <ul style="list-style:none">
                         <li><b>Age :</b> @(DateTime.Now.Year-item.DateOfBirth.Year)</li>
                         <li><b>Gender :</b> @(item.Gender==true?"Male":"Female")</li>

@@ -4,11 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<br />
+<br />
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create a New Department", "Create", null, new { @class = "btn btn-primary" }) | 
+    @Html.ActionLink("Back to Admin Page", "Index", "AdminManager", null, new { @class = "btn btn-default" })
 </p>
+<hr />
 <table class="table table-bordered">
     <tr>
         <th>
@@ -21,24 +24,25 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CreatedAt)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id},new {@class="btn btn-warning" }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id },new {@class="btn btn-danger" })
-    </td>
-    <td>
-        <a href="@Url.Action("DepartmentEmployees","DepartmentManager",new {id=item.Id })" class="btn btn-primary">
-            See Employees
-        </a>
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+            <td>
+                <a href="@Url.Action("DepartmentEmployees","DepartmentManager",new {id=item.Id })" class="btn btn-primary">
+                    See Employees
+                </a>
+            </td>
+        </tr>
+    }
 
 </table>

@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title= "Admin";
+}
+
+<h2>Wellcome to Admin Pages</h2>
+<hr />
+<div class="col-md-6" style="background-color:dimgray;color:white;border:1px solid black">
+    <h4>Employee Management</h4>
+    <div class="list-group">
+        @Html.ActionLink("Manage Employees", "Index", "EmployeeManager", null, new { @class = "list-group-item"  })
+    </div>
+</div> 
+<div class="col-md-6" style="background-color:dimgray;color:white">
+    <h4>Department Management</h4>
+    <div class="list-group">
+        @Html.ActionLink("Manage Employees", "Index", "DepartmentManager", null, new { @class = "list-group-item" })
+    </div>
+</div>

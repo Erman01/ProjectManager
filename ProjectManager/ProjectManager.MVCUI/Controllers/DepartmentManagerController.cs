@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ProjectManager.MVCUI.Controllers
 {
+    [Authorize(Roles = "Admin")]//admin@gmail.com C@de1234
     public class DepartmentManagerController : Controller
     {
         private readonly IRepository<DepartmentModel> _departmentModelRepository;
