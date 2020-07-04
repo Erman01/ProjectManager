@@ -19,6 +19,22 @@ namespace ProjectManager.MVCUI.Controllers
         public ActionResult Index()
         {
             List<GalleryModel> galleryList = _galleryRepository.Collection().OrderBy(x => x.CreatedAt).ToList();
+          
+            foreach (var item in galleryList)
+            {
+                if (DateTime.Now.Day-item.CreatedAt.Day==0)
+                {
+                    ViewBag.CreatedAt = "Created Today";
+                }
+                else if (DateTime.Now.Day-item.CreatedAt.Day==1)
+                {
+                    ViewBag.CreatedAt = "Created Yesterday";
+                }
+                else if (DateTime.Now.Day - item.CreatedAt.Day > 1)
+                {
+                    ViewBag.CreatedAt =(DateTime.Now.Day - item.CreatedAt.Day)+ " Days Ago Created";
+                }
+            }
 
             return View(galleryList);
         }

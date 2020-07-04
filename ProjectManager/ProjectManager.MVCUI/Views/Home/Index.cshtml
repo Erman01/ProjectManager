@@ -3,21 +3,24 @@
     ViewBag.Title = "Home Page";
 }
 <br />
-<h4>All Galleries</h4>
+
 <hr />
-
-<div class="row" style="align-content:center">
-
-    @foreach (var item in Model)
-    {
-        <div class="col-lg-3 col-md-5 col-xs-6 thumb" style="border:1px solid;border-color:cadetblue;margin:8px;padding:8px">
-
-            <h4 class="text-center">@item.Title</h4>
-            <a href="@Url.Action("Index","GalleryManager")">
-                <img class="img-responsive center-block" src="~/Content/Galleries/@item.Url" style="height:200px" alt="@item.Title">
-                <b>See More!</b>
-            </a>
-
-        </div>
-    }
+<div class="col-md-12">
+    <div class="col-md-3">
+        <a href="@Url.Action("Create", "GalleryManager")" class="btn btn-default btn-lg" style="color:black;box-shadow: 1px 2px #888888">
+            <span class="glyphicon glyphicon-plus"></span> Create Your Gallery
+        </a>
+    </div>
+    <div class="row col-md-9" style="align-content:center">
+        @foreach (var item in Model)
+        {
+    <div class="col-lg-3 col-md-5 col-xs-6 thumb" style="border:1px solid;border-color:#888888;box-shadow: 1px 2px #888888;margin:5px;padding:5px;color:black">
+        <h4 class="text-center">@item.Title.ToUpper()</h4>
+        <img class="img-thumbnail center-block" src="~/Content/Galleries/@item.Url" style="height:150px" alt="@item.Title">
+      <p style="text-align:center">
+          <b> @ViewBag.CreatedAt</b>
+      </p>
+    </div>
+        }
+    </div>
 </div>

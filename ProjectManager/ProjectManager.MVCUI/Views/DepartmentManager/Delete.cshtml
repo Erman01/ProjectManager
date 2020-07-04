@@ -13,7 +13,7 @@
     <dl class="dl-horizontal">
 
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+           Department Name : 
         </dt>
 
         <dd>
@@ -21,11 +21,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CreatedAt)
+           Created Date : 
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CreatedAt)
+            @Model.CreatedAt.ToString("dd.MM.yyyy")
         </dd>
 
     </dl>
@@ -35,8 +35,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to Department List", "Index",null,new {@class="btn btn-default" })
         </div>
     }
 </div>

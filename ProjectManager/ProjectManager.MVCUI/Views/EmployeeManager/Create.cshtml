@@ -18,7 +18,7 @@
     <div class="col-md-3">
         <div class="form-group">
             <div class="text-center">
-                <h4>Choose your profile image</h4>
+                <h4>Upload an Employee Image</h4>
             </div>
             <div class="col-md-10">
                 <input type="file" name="file" id="file" class="form-control" />
@@ -82,7 +82,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-success" />
             </div>
         </div>
 
@@ -91,7 +91,8 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+   @Html.ActionLink("Back to Admin Page","Index","AdminManager",null,new {@class="btn btn-default" }) |
+    @Html.ActionLink("Go to Employee List", "Index",null,new {@class="btn btn-default" }) 
 </div>
 
 @section Scripts {

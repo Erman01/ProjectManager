@@ -4,6 +4,7 @@ using ProjectManager.Core.Models;
 using ProjectManager.Core.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -28,15 +29,15 @@ namespace ProjectManager.MVCUI.Controllers
             List<GalleryImageModel> imageList = _galleryImageRepository.Collection().Where(x => x.ManagerModelId == loggedInUserId).ToList();
             ViewBag.PhotoCount = imageList.Count;
             return View(imageList);
-
-
         }
         public ActionResult Create()
         {
+            string loggedInUserGallery = User.Identity.GetUserId();
             GalleryImageViewModel galleryImageViewModel = new GalleryImageViewModel()
             {
+               
                 GalleryImageModel = new GalleryImageModel(),
-                GalleryModels = _galleryRepository.Collection().ToList()
+                GalleryModels = _galleryRepository.Collection().Where(x=>x.ManagerModelId==loggedInUserGallery).ToList()
             };
             return View(galleryImageViewModel);
         }
@@ -84,10 +85,11 @@ namespace ProjectManager.MVCUI.Controllers
             }
             else
             {
+                string loggedInUserGallery = User.Identity.GetUserId();
                 GalleryImageViewModel galleryImageViewModel = new GalleryImageViewModel()
                 {
                     GalleryImageModel = galleryImageModel,
-                    GalleryModels = _galleryRepository.Collection()
+                    GalleryModels = _galleryRepository.Collection().Where(x=>x.ManagerModelId==loggedInUserGallery).ToList()
                 };
                 return View(galleryImageViewModel);
             }

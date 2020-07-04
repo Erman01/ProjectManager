@@ -3,6 +3,7 @@ using ProjectManager.Core.Contracts;
 using ProjectManager.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -33,8 +34,8 @@ namespace ProjectManager.MVCUI.Controllers
         public ActionResult GalleryImages(int id)
         {
             GalleryModel model = _galleryModelRepository.GetbyId(id);
-            
-            if (model==null)
+
+            if (model == null)
             {
                 return HttpNotFound();
             }
@@ -45,7 +46,6 @@ namespace ProjectManager.MVCUI.Controllers
                 return View(listOfImages);
             }
         }
-   
         public ActionResult Create()
         {
             GalleryModel galleryModel = new GalleryModel();
@@ -53,7 +53,6 @@ namespace ProjectManager.MVCUI.Controllers
             return View(galleryModel);
         }
         [HttpPost]
-       
         public ActionResult Create(GalleryModel galleryModel, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
@@ -68,15 +67,13 @@ namespace ProjectManager.MVCUI.Controllers
                     galleryModel.ManagerModelId = loggedInuserId;
                     galleryModel.Url = galleryModel.Id + Path.GetFileNameWithoutExtension(file.FileName) + ".jpg";
                     file.SaveAs(Server.MapPath("//Content//Galleries//") + galleryModel.Url);
-                    ViewBag.Success = "Uploaded Successfully";
                 }
                 _galleryModelRepository.Insert(galleryModel);
                 _galleryModelRepository.Commit();
-
+                ModelState.Clear();
                 return RedirectToAction("Index");
             }
         }
-      
         public ActionResult Edit(int id)
         {
             GalleryModel galleryModel = _galleryModelRepository.GetbyId(id);
@@ -88,8 +85,6 @@ namespace ProjectManager.MVCUI.Controllers
             {
                 return View(galleryModel);
             }
-
-
         }
         [HttpPost]
         public ActionResult Edit(GalleryModel galleryModel, int id, HttpPostedFileBase file)

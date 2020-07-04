@@ -21,7 +21,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Url, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <img class="img-responsive" style="height:150px" src="~/Content/Galleries/@Model.Url"/>
+            <img class="img-responsive" style="height:150px;box-shadow: 2px 4px #A9A9A9" src="~/Content/Galleries/@Model.Url" />
             <br />Change the cover image
             <input type="file" name="file" id="file" class="form-control" />
         </div>
@@ -37,11 +37,11 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            <input type="submit" value="Save" class="btn btn-success" /> | @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
         </div>
     </div>
     <div>
-        @Html.ActionLink("Back to List", "Index",null,new {@class="btn btn-default" })
+      
     </div>
 </div>
  

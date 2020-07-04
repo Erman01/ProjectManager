@@ -7,20 +7,20 @@
 <h2>@User.Identity.Name's Gallery List</h2>
 
 <p>
-    @Html.ActionLink("Create a new gallery", "Create",null,new {@class="btn btn-primary" })
+    @Html.ActionLink("Create a new gallery", "Create","GalleryManager",null,new {@class="btn btn-primary" })
 </p>
 <div class="row">
     <div class="col-lg-12">
 
-        <div class="alert alert-warning"> You have @ViewBag.PhotoCount Gallery </div>
+        <div class="alert alert-success"> You have @ViewBag.PhotoCount Gallery </div>
     </div>
     @foreach (var item in Model)
     {
         <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
+            <div class="thumbnail"style="box-shadow:2px 4px #A9A9A9">
 
                 <a href=@Url.Action("Index", "GalleryManager")>
-                    <img class="img-responsive" src="~/Content/Galleries/@item.Url" style="height: 250px;width:100%;border:thin solid whitesmoke">
+                    <img class="rounded mx-auto d-block" src="~/Content/Galleries/@item.Url" style="height:200px">
                 </a>
                 <div class="caption">
 

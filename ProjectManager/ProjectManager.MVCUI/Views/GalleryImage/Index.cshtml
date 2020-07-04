@@ -7,7 +7,7 @@
 <h2>@User.Identity.Name's Image List</h2>
 
 <p>
-    @Html.ActionLink("Upload a new image", "Create", null, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Upload a new image", "Create","GalleryImage", null, new { @class = "btn btn-primary" }) |
     @Html.ActionLink("Back to Gallery", "Index", "GalleryManager", null, new { @class = "btn btn-default" })
 </p>
 
@@ -18,10 +18,10 @@
     @foreach (var item in Model)
     {
         <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
+            <div class="thumbnail"style="box-shadow:2px 4px #A9A9A9">
 
                 <a>
-                    <img class="img-responsive" style="height:200px;width:auto;align-items:center;border-color:black;" src="~/Content/GalleryImages/@item.Url" />
+                    <img class="img-thumbnail" style="height:200px;width:auto;align-items:center;border-color:black;" src="~/Content/GalleryImages/@item.Url" />
                 </a>
                 <div class="caption">
 
@@ -29,10 +29,10 @@
 
                         <li><b>@item.Description</b></li>
                         <br />
-                        <li><b>Created Date :</b> @item.CreatedAt.ToString("dd.MM.yyyy")</li>
+                        <li><b>Created Date : </b>@item.CreatedAt.ToString("dd.MM.yyyy")</li>
                         <br />
+                        <li><b>Gallery Name : </b>@item.GalleryModel.Title</li>
                         <li>
-
                             @Html.ActionLink("Edit", "Edit", "GalleryImage", new { id = item.Id }, new { @class = "btn btn-warning" }) |
                             @Html.ActionLink("Delete", "Delete", "GalleryImage", new { id = item.Id }, new { @class = "btn btn-danger" })
 

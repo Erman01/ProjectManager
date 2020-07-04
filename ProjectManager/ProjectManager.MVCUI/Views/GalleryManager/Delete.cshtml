@@ -4,27 +4,17 @@
     ViewBag.Title = "Delete";
 }
 
-    <br />
+<br />
 <h3>Are you sure you want to delete @Model.Title Gallery</h3>
-<div>
-    
-    <hr />
+<br />
+<div class="container">
     <dl class="dl-horizontal">
         <dt>
-
         </dt>
-
         <dd>
-            <img class="img-responsive" src="~/Content/Galleries/@Model.Url" style="height:200px;width:auto; border:solid thin whitesmoke" />
+            <img class="img-responsive" src="~/Content/Galleries/@Model.Url" style="height:200px;width:auto; border:solid thin;border-color:black;margin:8px;padding:8px" />
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
-
+        <br />
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -33,14 +23,28 @@
             @Html.DisplayFor(model => model.Title)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+
+        <dt></dt>
+
+        <dd>
+            <br />
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    @Html.ActionLink("Back to Galleries", "Index", null, new { @class = "btn btn-default" })
+                </div>
+            }
+        </dd>
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
 </div>
+

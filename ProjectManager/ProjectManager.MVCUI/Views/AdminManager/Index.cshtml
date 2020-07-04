@@ -1,18 +1,37 @@
-﻿@{
-    ViewBag.Title= "Admin";
+﻿@model ProjectManager.Core.Models.ManagerModel
+@{
+    ViewBag.Title = "Admin";
 }
 
-<h2>Wellcome to Admin Pages</h2>
+<br />
+<br />
+<h2>Welcome to Admin Page @User.Identity.Name</h2>
 <hr />
-<div class="col-md-6" style="background-color:dimgray;color:white;border:1px solid black">
-    <h4>Employee Management</h4>
-    <div class="list-group">
-        @Html.ActionLink("Manage Employees", "Index", "EmployeeManager", null, new { @class = "list-group-item"  })
+<div class="col-md-12">
+    <div class="col-md-4" style="margin:5px;padding:5px">
+        <a style="color:white;background-color:#484848" href="@Url.Action("Create", "EmployeeManager")" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-plus"></span> New Employee
+        </a>  |
+        <a style="color:white;background-color:#484848" href=@Url.Action("Create", "DepartmentManager") class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-plus"></span> New Department
+        </a>
     </div>
-</div> 
-<div class="col-md-6" style="background-color:dimgray;color:white">
-    <h4>Department Management</h4>
-    <div class="list-group">
-        @Html.ActionLink("Manage Employees", "Index", "DepartmentManager", null, new { @class = "list-group-item" })
+</div>
+<br />
+<div class="col-md-6" style="margin:5px;padding:5px">
+    <div class="col-md-12" style="background-color:#484848;color:white;border:3px solid white">
+        <h4><b>Employee Management</b></h4>
+        <div class="list-group">
+            @Html.ActionLink("Click to Manage Employees", "Index", "EmployeeManager", null, new { @class = "list-group-item" })
+        </div>
+    </div>
+    <div>
+        <a class="brand"></a>
+    </div>
+    <div class="col-md-12" style="background-color:#484848;color:white;border:3px solid white">
+        <h4><b>Department Management</b></h4>
+        <div class="list-group">
+            @Html.ActionLink("Click to Manage Departments", "Index", "DepartmentManager", null, new { @class = "list-group-item" })
+        </div>
     </div>
 </div>

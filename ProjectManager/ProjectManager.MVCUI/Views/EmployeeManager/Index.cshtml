@@ -17,9 +17,9 @@
     @foreach (var item in Model)
     {
         <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
+            <div class="thumbnail"style="box-shadow:2px 4px #A9A9A9">
 
-                <img class="img-responsive" style="height:150px;align-items:center;border-color:black;padding:5px" src="~/Content/EmployeeImage/@item.Url" />
+                <img class="img-thumbnail" style="height:150px;align-items:center;border-color:black;padding:5px" src="~/Content/EmployeeImage/@item.Url" />
                 <div class="caption">
                     <h3 style="text-align:center;color:blue">@item.FirstName.ToUpper() @item.LastName.ToUpper()</h3>
                     <ul style="list-style:none">
