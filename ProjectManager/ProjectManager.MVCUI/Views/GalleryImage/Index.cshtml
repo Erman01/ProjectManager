@@ -34,7 +34,7 @@
                         <li><b>Gallery Name : </b>@item.GalleryModel.Title</li>
                         <li>
                             @Html.ActionLink("Edit", "Edit", "GalleryImage", new { id = item.Id }, new { @class = "btn btn-warning" }) |
-                            @Html.ActionLink("Delete", "Delete", "GalleryImage", new { id = item.Id }, new { @class = "btn btn-danger" })
+                            @Html.ActionLink("Delete", "Delete", "GalleryImage", new { id = item.Id }, new { @class = "btn btn-danger" ,onclick="return confirm('Are you sure to Delete?')"})
 
                         </li>
                     </ul>

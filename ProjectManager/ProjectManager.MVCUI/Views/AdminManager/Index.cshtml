@@ -7,31 +7,42 @@
 <br />
 <h2>Welcome to Admin Page @User.Identity.Name</h2>
 <hr />
-<div class="col-md-12">
-    <div class="col-md-4" style="margin:5px;padding:5px">
-        <a style="color:white;background-color:#484848" href="@Url.Action("Create", "EmployeeManager")" class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-plus"></span> New Employee
-        </a>  |
-        <a style="color:white;background-color:#484848" href=@Url.Action("Create", "DepartmentManager") class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-plus"></span> New Department
-        </a>
-    </div>
-</div>
-<br />
-<div class="col-md-6" style="margin:5px;padding:5px">
-    <div class="col-md-12" style="background-color:#484848;color:white;border:3px solid white">
-        <h4><b>Employee Management</b></h4>
-        <div class="list-group">
-            @Html.ActionLink("Click to Manage Employees", "Index", "EmployeeManager", null, new { @class = "list-group-item" })
+<style>
+    .MainButtons {
+        font-weight: bold;
+        box-shadow: 3px 3px 10px 5px #DCDCDC inset;
+    }
+</style>
+
+
+<div class="container">
+    <div class="col-md-12">
+        <div class="col-md-4" style="margin:6px;padding:6px">
+            <a style="color:black;background-color:white;border:2px solid #480000" href="@Url.Action("Create", "EmployeeManager")" class="btn btn-default btn-block MainButtons">
+                <span class="glyphicon glyphicon-plus"></span> New Employee
+            </a>
+            <a style="color:black;background-color:white;border:2px solid #480000" href=@Url.Action("Create", "DepartmentManager") class="btn btn-default btn-block MainButtons">
+                <span class="glyphicon glyphicon-plus"></span> New Department
+            </a>
         </div>
     </div>
-    <div>
-        <a class="brand"></a>
-    </div>
-    <div class="col-md-12" style="background-color:#484848;color:white;border:3px solid white">
-        <h4><b>Department Management</b></h4>
-        <div class="list-group">
-            @Html.ActionLink("Click to Manage Departments", "Index", "DepartmentManager", null, new { @class = "list-group-item" })
+    <br />
+    <div class="col-md-6" style="margin:5px;padding:5px">
+        <div class="col-md-12" style="background-color:#300000  ;color:white;border:3px solid #480000 ">
+            <h4 style="text-align:center"><b>Employee Management</b></h4>
+            <div class="list-group">
+                @Html.ActionLink("Click to Manage Employees", "Index", "EmployeeManager", null, new { @class = "list-group-item btn btn-default MainButtons" })
+            </div>
+        </div>
+
+        <hr class="solid" />
+
+        <div class="col-md-12" style="background-color:#300000  ;color:white;margin-top:10px;border:3px solid #480000 ">
+            <h4 style="text-align:center"><b>Department Management</b></h4>
+            <div class="list-group">
+                @Html.ActionLink("Click to Manage Departments", "Index", "DepartmentManager", null, new { @class = "list-group-item btn btn-default MainButtons" })
+            </div>
         </div>
     </div>
 </div>
+

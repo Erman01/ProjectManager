@@ -22,17 +22,21 @@ namespace ProjectManager.MVCUI.Controllers
           
             foreach (var item in galleryList)
             {
-                if (DateTime.Now.Day-item.CreatedAt.Day==0)
+                DateTime today = DateTime.Now;
+                DateTime createdDate = item.CreatedAt;
+                TimeSpan timeSpan = today.Subtract(createdDate);
+
+                if (timeSpan.TotalDays <1)
                 {
                     ViewBag.CreatedAt = "Created Today";
                 }
-                else if (DateTime.Now.Day-item.CreatedAt.Day==1)
+                else if (timeSpan.TotalDays==1)
                 {
                     ViewBag.CreatedAt = "Created Yesterday";
                 }
-                else if (DateTime.Now.Day - item.CreatedAt.Day > 1)
+                else
                 {
-                    ViewBag.CreatedAt =(DateTime.Now.Day - item.CreatedAt.Day)+ " Days Ago Created";
+                    ViewBag.CreatedAt =timeSpan.TotalDays + " Days Ago Created";
                 }
             }
 

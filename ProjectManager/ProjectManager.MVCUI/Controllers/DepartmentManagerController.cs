@@ -21,14 +21,14 @@ namespace ProjectManager.MVCUI.Controllers
         // GET: DepartmentManager
         public ActionResult Index()
         {
-           List<DepartmentModel> departmentModel = _departmentModelRepository.Collection().ToList();
+          List<DepartmentModel> departmentList = _departmentModelRepository.Collection().ToList();
 
-            return View(departmentModel);
+            return View(departmentList);
         }
         public ActionResult DepartmentEmployees(int id)
         {
             DepartmentModel departmentModel = _departmentModelRepository.GetbyId(id);
-            if (departmentModel==null)
+            if (departmentModel == null)
             {
                 return HttpNotFound();
             }
@@ -63,7 +63,7 @@ namespace ProjectManager.MVCUI.Controllers
         public ActionResult Edit(int Id)
         {
             DepartmentModel departmentModel = _departmentModelRepository.GetbyId(Id);
-            if (departmentModel==null)
+            if (departmentModel == null)
             {
                 return HttpNotFound();
             }
@@ -73,10 +73,10 @@ namespace ProjectManager.MVCUI.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Edit(DepartmentModel departmentModel,int Id)
+        public ActionResult Edit(DepartmentModel departmentModel, int Id)
         {
             DepartmentModel departmentModelToUpdate = _departmentModelRepository.GetbyId(Id);
-            if (departmentModelToUpdate==null)
+            if (departmentModelToUpdate == null)
             {
                 return HttpNotFound();
             }
@@ -98,7 +98,7 @@ namespace ProjectManager.MVCUI.Controllers
         public ActionResult Delete(int id)
         {
             DepartmentModel departmentModel = _departmentModelRepository.GetbyId(id);
-            if (departmentModel==null)
+            if (departmentModel == null)
             {
                 return HttpNotFound();
             }
@@ -112,7 +112,7 @@ namespace ProjectManager.MVCUI.Controllers
         public ActionResult ConfirmDelete(int id)
         {
             DepartmentModel departmentModelToDelete = _departmentModelRepository.GetbyId(id);
-            if (departmentModelToDelete==null)
+            if (departmentModelToDelete == null)
             {
                 return HttpNotFound();
             }
