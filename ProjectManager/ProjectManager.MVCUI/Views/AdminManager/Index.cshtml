@@ -5,40 +5,47 @@
 
 <br />
 <br />
-<h2>Welcome to Admin Page @User.Identity.Name</h2>
+<h2 style="color:#001f3f">Welcome to Admin Page</h2>
 <hr />
+
 <style>
     .MainButtons {
         font-weight: bold;
-        box-shadow: 3px 3px 10px 5px #DCDCDC inset;
+        box-shadow: 1px 1px 2px 2px grey inset;
+    }
+    .ButtonColor {
+        background-color: #001f3f;
+        color: white;
+        border: 2px solid #0275d8;
+        box-shadow: 1px 2px #0275d8;
+    }
+    .textAlign{
+        text-align:center;
+        font-weight:bold;
     }
 </style>
-
 
 <div class="container">
     <div class="col-md-12">
         <div class="col-md-4" style="margin:6px;padding:6px">
-            <a style="color:black;background-color:white;border:2px solid #480000" href="@Url.Action("Create", "EmployeeManager")" class="btn btn-default btn-block MainButtons">
+            <a href="@Url.Action("Create", "EmployeeManager")" class="btn btn-default btn-group-lg MainButtons ButtonColor">
                 <span class="glyphicon glyphicon-plus"></span> New Employee
             </a>
-            <a style="color:black;background-color:white;border:2px solid #480000" href=@Url.Action("Create", "DepartmentManager") class="btn btn-default btn-block MainButtons">
+            <a href=@Url.Action("Create", "DepartmentManager") class="btn btn-default btn-group-lg MainButtons ButtonColor">
                 <span class="glyphicon glyphicon-plus"></span> New Department
             </a>
         </div>
     </div>
     <br />
     <div class="col-md-6" style="margin:5px;padding:5px">
-        <div class="col-md-12" style="background-color:#300000  ;color:white;border:3px solid #480000 ">
-            <h4 style="text-align:center"><b>Employee Management</b></h4>
+        <div class="col-md-12 ButtonColor">
+            <h4 class="textAlign">EMPLOYEE MANAGEMENT</h4>
             <div class="list-group">
                 @Html.ActionLink("Click to Manage Employees", "Index", "EmployeeManager", null, new { @class = "list-group-item btn btn-default MainButtons" })
             </div>
         </div>
-
-        <hr class="solid" />
-
-        <div class="col-md-12" style="background-color:#300000  ;color:white;margin-top:10px;border:3px solid #480000 ">
-            <h4 style="text-align:center"><b>Department Management</b></h4>
+        <div class="col-md-12 ButtonColor" style="margin-top:10px">
+            <h4 class="textAlign">DEPARTMENT MANAGEMENT</h4>
             <div class="list-group">
                 @Html.ActionLink("Click to Manage Departments", "Index", "DepartmentManager", null, new { @class = "list-group-item btn btn-default MainButtons" })
             </div>

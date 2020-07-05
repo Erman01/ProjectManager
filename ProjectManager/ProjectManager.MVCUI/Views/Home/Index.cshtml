@@ -3,24 +3,76 @@
     ViewBag.Title = "Home Page";
 }
 <br />
-
 <hr />
-<div class="col-md-12">
-    <div class="col-md-3">
-        <a href="@Url.Action("Create", "GalleryManager")" class="btn btn-default btn-lg" style="color:black;box-shadow: 1px 2px #888888">
-            <span class="glyphicon glyphicon-plus"></span> Create Your Gallery
-        </a>
-    </div>
-    <div class="row col-md-9" style="align-content:center">
-        @foreach (var item in Model)
-        {
-    <div class="col-lg-3 col-md-5 col-xs-6 thumb" style="border:1px solid;border-color:#888888;box-shadow: 1px 2px #888888;margin:5px;padding:5px;color:black">
-        <h4 class="text-center">@item.Title.ToUpper()</h4>
-        <img class="img-thumbnail center-block" src="~/Content/Galleries/@item.Url" style="height:150px" alt="@item.Title">
-      <p style="text-align:center">
-          <b> @ViewBag.CreatedAt</b>
-      </p>
-    </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .Title {
+            color: white;
+            background-color: #001f3f;
+            border: 1px solid #0275d8;
+            padding: 12px;
+            margin: 1px;
+            text-align: center;
+            font-weight: bold;
         }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-3">
+            <div class="col-md-12">
+                <a href="@Url.Action("Create", "GalleryManager")" class="btn btn-default btn-lg" style="color:#0275d8;box-shadow: 1px 2px #0275d8">
+                    <span class="glyphicon glyphicon-plus"></span> Create Your Gallery
+                </a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="col-md-12">
+                <!--Test-->
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox" >
+                        @{ int i = 0;}
+                        @foreach (var item in Model)
+                        {
+                            i++;
+                            var activeImage = i == 1 ? "active" : "";
+                            <div class="item @activeImage">
+                                <h4 class="Title">@item.Title Gallery</h4>
+                                <img class="img-thumbnail" src="~/Content/Galleries/@item.Url" style="height:550px;width:100%" alt="@item.Title">
+                                <p class="Title">@ViewBag.CreatedAt</p>
+                            </div>
+                        }
+                    </div>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+
+</body>
+</html>
+
+
+
+
+
